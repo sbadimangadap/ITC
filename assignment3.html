@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignment 3</title>
+</head>
+
+<style>
+    body 
+    {
+        background-color: white;
+        text-align: center;
+    }
+    
+    h1 
+    {
+        margin-top: 250px;
+    }
+
+    .modal 
+    {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    z-index: 1;
+    }
+
+    .modal-button 
+    {
+        cursor: pointer;
+        margin-top: 20px;
+    }
+
+    #income 
+    {
+    width: 180px;
+    }
+</style>
+
+<body>
+
+    <h1>Factorial, Sum, and Average of the First N Numbers</h1>
+
+    <label for="calculatorSelector">Select a Calculator:</label>
+    <select id="calculatorSelector">
+        <option value="" disabled selected>Choose a calculator</option>
+        <option value="factorial">Factorial Calculator</option>
+        <option value="sum">Sum Calculator</option>
+        <option value="average">Average of the First N Numbers Calculator</option>
+    </select>
+
+    <div id="factorialCalculator" style="display: none;">
+        <br>
+        <label for="number">Enter a number:</label>
+        <input type="number" id="number" dir="rtl" placeholder="Enter a number">
+        <button id="factorial">Calculate Factorial</button>
+        <p id="result1"></p>
+    </div>
+
+    <div id="sumCalculator" style="display: none;">
+        <br>
+        <button id="sum">Add Number</button>
+        <p id="result2"></p>
+    </div>
+
+    <div id="averageCalculator" style="display: none;">
+        <br>
+        <label for="n">Enter a value for N:</label>
+        <input type="number" id="n" dir="rtl" placeholder="Enter N">
+        <button id="average">Calculate Average</button>
+        <p id="result3"></p>
+        <p>The average, as an integer display, is rounded. Inaccuracy is expected.</p>
+    </div>
+
+    <button id="clearValuesButton" class="modal-button">Clear Values</button>
+
+    <div id="clearModal" class="modal">
+        <p>Do you want to clear values?</p>
+        <button class="modal-button" id="yesButton">Yes</button>
+        <button class="modal-button" id="noButton">No</button>
+    </div>
+    
+    <p>  
+        <a href="index.html">Back to Home Page</a>
+    </p>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () 
+{
+    document.getElementById("calculatorSelector").addEventListener("change", selectCalculator);
+
+    document.getElementById("sum").addEventListener("click", sum);
+    document.getElementById("factorial").addEventListener("click", factorial);
+    document.getElementById("average").addEventListener("click", average);
+
+    document.getElementById("clearValuesButton").addEventListener("click", openModal);
+    document.getElementById("yesButton").addEventListener("click", clearValues);
+    document.getElementById("noButton").addEventListener("click", closeModal);
+});
+    
+    function selectCalculator() 
+    {
+        var calculatorSelector = document.getElementById("calculatorSelector");
+        var selectedCalculator = calculatorSelector.value;
+
+        document.getElementById("factorialCalculator").style.display = "none";
+        document.getElementById("sumCalculator").style.display = "none";
+        document.getElementById("averageCalculator").style.display = "none";
+
+        if (selectedCalculator !== "") 
+        {
+            document.getElementById(selectedCalculator + "Calculator").style.display = "block";
+        }
+    }
+    function factorial() //While loop
+    {
+        var inputNumber = document.getElementById("number").value;
+
+        if (inputNumber === "" || isNaN(inputNumber) || parseInt(inputNumber) < 0) 
+        {
+            alert("Please enter a non-negative integer.");
+            return;
+        }
+
+        var number = parseInt(inputNumber);
+
+        var factorial = 1;
+        var i = 1;
+
+        while (i <= number) 
+        {
+            factorial *= i;
+            i++;
+        }
+
+        document.getElementById("result1").innerHTML = "Factorial of " + number + " is: " + factorial;
+    }
+
+    function sum() //Do-while loop
+    {
+        var sum = 0;
+        var userInput;
+
+        do 
+        {
+            userInput = prompt("Enter a number (enter 0 to finish):");
+
+            var number = parseFloat(userInput);
+
+            if (!isNaN(number)) 
+            {
+                sum += number;
+            } else if (userInput !== null) 
+            {
+                alert("Invalid input. Please enter a valid number.");
+            }
+        } while (userInput !== null && userInput !== "0");
+
+        document.getElementById("result2").innerHTML = "The sum is: " + sum;
+    }
+
+    function average() //For loop
+    {
+        var n = document.getElementById("n").value;
+
+        if (isNaN(n) || n <= 0) 
+        {
+            alert("Please enter a positive number for N.");
+            return;
+        }
+
+        n = parseInt(n);
+        var sum = 0;
+
+        for (var i = 1; i <= n; i++) 
+        {
+            sum += i;
+        }
+
+        var average = sum / n;
+
+        document.getElementById("result3").innerHTML = "The average of the first " + n + " natural numbers is: " + average.toFixed(0);
+    }
+
+    function openModal()
+    {
+        document.getElementById("clearModal").style.display = "block";
+    }
+    
+    function closeModal()
+    {
+        document.getElementById("clearModal").style.display = "none";
+    }
+    
+    function clearValues() 
+    {
+        closeModal();
+        document.getElementById("number").value = " ";
+        document.getElementById("result1").innerHTML = " ";
+        document.getElementById("result2").innerHTML = " ";
+        document.getElementById("result3").innerHTML = " ";
+
+    }
+</script>
+</body>
+</html>
