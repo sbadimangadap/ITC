@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,74 +7,40 @@
 </head>
 
 <style>
-    body {
-        background-color: #f4e7d5; /* Light brown background */
+    body 
+    {
+        background-color: white;
         text-align: center;
-        font-family: 'Arial', sans-serif;
-        color: #444;
     }
 
-    h1 {
-        margin-top: 50px; /* Adjusted margin */
-        color: #8b4513; /* Saddle brown text color */
+    h1 
+    {
+       margin-top: 250px;
+    }
+    
+    .modal 
+    {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    z-index: 1;
     }
 
-    label {
-        display: block;
-        margin: 20px 0 10px;
-    }
-
-    input {
-        padding: 10px;
-        font-size: 16px;
-        border: 1px solid #8b4513; /* Saddle brown border */
-        border-radius: 5px;
-    }
-
-    button {
-        padding: 10px 20px;
-        font-size: 16px;
-        background-color: #8b4513; /* Saddle brown button color */
-        color: #fff;
-        border: none;
-        border-radius: 5px;
+    .modal-button 
+    {
         cursor: pointer;
         margin-top: 20px;
     }
 
-    .modal {
-        display: none;
-        position: fixed;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        padding: 20px;
-        background-color: #fff;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-        z-index: 1;
-        border-radius: 5px;
+    #income 
+    {
+    width: 180px;
     }
-
-    #result {
-        font-size: 18px;
-        margin-top: 20px;
-        color: #8b4513; /* Saddle brown text color */
-    }
-
-    p {
-        margin-top: 20px;
-        font-size: 14px;
-    }
-
-    a {
-        color: #8b4513; /* Saddle brown link color */
-        text-decoration: none;
-    }
-
-    a:hover {
-        text-decoration: underline;
-    }
-
 </style>
 
 <body>
@@ -104,7 +70,58 @@
     </p>
 
 <script>
-    // Your existing JavaScript code remains unchanged
+    document.addEventListener("DOMContentLoaded", function () 
+    {
+        document.getElementById("calculateTaxButton").addEventListener("click", calculateTax);
+        document.getElementById("clearValuesButton").addEventListener("click", openModal);
+        document.getElementById("yesButton").addEventListener("click", clearValues);
+        document.getElementById("noButton").addEventListener("click", closeModal);
+    });
+
+    function calculateTax() 
+    {
+        var income = document.getElementById("income").value;
+
+        var tax;
+        if (income <= 250000) 
+        {
+            tax = 0.0 * income;
+        } else if (income <= 400000) 
+        {
+            tax = 0.2 * income;
+        } else if (income <= 800000) 
+        {
+            tax = 0.25 * income + 30000;
+        } else if (income <= 2000000) 
+        {
+            tax = 0.3 * income + 130000;
+        } else if (income <= 8000000) 
+        {
+            tax = 0.32 * income + 490000;
+        } else 
+        {
+            tax = 0.35 * income + 2410000;
+        }
+
+        document.getElementById("result").innerHTML = "Your estimated tax: ₱" + tax.toFixed(2);
+    }
+
+    function openModal()
+    {
+        document.getElementById("clearModal").style.display = "block";
+    }
+    
+    function closeModal()
+    {
+        document.getElementById("clearModal").style.display = "none";
+    }
+
+    function clearValues() 
+    {
+        closeModal();
+        document.getElementById("income").value = "";
+        document.getElementById("result").innerHTML = "";
+    }
 </script>
 </body>
 </html>
