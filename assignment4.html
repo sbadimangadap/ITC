@@ -20,6 +20,7 @@
             color: #f4e2d8; /* Light beige - Header text color */
             padding: 20px;
             border-bottom: 2px solid #a37559; /* Slightly darker brown - Border color */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
 
         table {
@@ -27,6 +28,7 @@
             width: 100%;
             font-family: 'Pacifico', cursive; /* Fancier font - Pacifico */
             margin-top: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
 
         th,
@@ -60,7 +62,7 @@
             transform: translate(-50%, -50%);
             padding: 20px;
             background-color: #f4e2d8; /* Light beige - Background color for modal */
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             z-index: 1;
             font-family: 'Pacifico', cursive; /* Fancier font - Pacifico */
         }
@@ -95,26 +97,26 @@
     <h1>Simple Payroll</h1>
 
     <label for="employeeNameInput">Employee Name:</label>
-    <input type="text" id="employeeNameInput">
+    <input type="text" id="employeeNameInput" style="box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
 
     <label for="daysWorkedInput">Days Worked:</label>
-    <input type="number" id="daysWorkedInput" dir="rtl">
+    <input type="number" id="daysWorkedInput" dir="rtl" style="box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
 
     <label for="dailyRateInput">Daily Rate:</label>
-    <input type="number" id="dailyRateInput" dir="rtl">
+    <input type="number" id="dailyRateInput" dir="rtl" style="box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
 
     <label for="deductionAmountInput">Deduction Amount:</label>
-    <input type="number" id="deductionAmountInput" dir="rtl">
+    <input type="number" id="deductionAmountInput" dir="rtl" style="box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
 
     <br>
     <br>
     <label for="lineNumberInput">Line Number to Delete:</label>
-    <input type="number" id="lineNumberInput" dir="rtl">
+    <input type="number" id="lineNumberInput" dir="rtl" style="box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
 
     <br><br>
-    <button id="addEmployee" class="modal-button">Add Employee</button>
+    <button id="addEmployee" class="modal-button" style="box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">Add Employee</button>
 
-    <button id="clearEmployeeButton" class="modal-button">Delete Employee</button>
+    <button id="clearEmployeeButton" class="modal-button" style="box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">Delete Employee</button>
 
     <div id="clearModal" class="modal">
         <p>Do you want to delete this employee?</p>
@@ -122,7 +124,7 @@
         <button class="modal-button" id="noButton">No</button>
     </div>
 
-    <button id="clearAllEmployeesButton" class="modal-button">Clear All Employees</button>
+    <button id="clearAllEmployeesButton" class="modal-button" style="box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">Clear All Employees</button>
 
     <div id="clearAllEmployeesModal" class="modal">
         <p>Do you want to clear all employees?</p>
