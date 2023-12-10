@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Assignment 1</title>
+    <title>Conversion Calculator</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
@@ -14,10 +14,72 @@
         background-color: #D2B48C; /* Brown palette color */
         text-align: center;
         font-family: 'Indie Flower', cursive;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
     }
 
     h1 {
-        margin-top: 250px;
+        margin-top: 100px;
+        font-size: 2.5em;
+        color: #663300;
+    }
+
+    select {
+        padding: 8px;
+        font-size: 1em;
+    }
+
+    .converter-container {
+        max-width: 600px;
+        margin: 20px auto;
+        background-color: #FFF;
+        border-radius: 10px;
+        padding: 20px;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    }
+
+    label {
+        display: block;
+        margin-top: 15px;
+        font-size: 1.2em;
+        color: #663300;
+    }
+
+    input {
+        padding: 10px;
+        font-size: 1em;
+        width: 80%;
+        margin: 10px 0;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+
+    button {
+        padding: 10px 20px;
+        font-size: 1em;
+        background-color: #8B4513; /* SaddleBrown color */
+        color: #FFF;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    .result-label {
+        display: block;
+        margin-top: 15px;
+        font-size: 1.2em;
+        color: #663300;
+    }
+
+    .result-input {
+        padding: 10px;
+        font-size: 1em;
+        width: 80%;
+        margin: 10px 0;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        background-color: #F5F5DC; /* Beige color */
     }
 
     .modal {
@@ -30,87 +92,111 @@
         background-color: #fff;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
         z-index: 1;
+        border-radius: 5px;
     }
 
     .modal-button {
         cursor: pointer;
         margin-top: 20px;
+        padding: 10px 20px;
+        font-size: 1em;
+        background-color: #8B4513; /* SaddleBrown color */
+        color: #FFF;
+        border: none;
+        border-radius: 5px;
+    }
+
+    .modal-button-secondary {
+        cursor: pointer;
+        margin-top: 20px;
+        padding: 10px 20px;
+        font-size: 1em;
+        background-color: #ccc;
+        color: #333;
+        border: none;
+        border-radius: 5px;
+    }
+
+    p {
+        margin-top: 20px;
+        font-size: 1.2em;
+        color: #663300;
+    }
+
+    a {
+        text-decoration: none;
+        color: #8B4513; /* SaddleBrown color */
+        font-weight: bold;
+    }
+
+    a:hover {
+        color: #663300;
     }
 </style>
 
 <body>
 
-    <h1>Conversion - (Celsius to Fahrenheit, Fahrenheit to Celsius, Meters to Feet, Feet to Meters)</h1>
+    <h1>Conversion Calculator</h1>
 
-    <label for="conversionType">Select Conversion Type:</label>
-    <select id="conversionType">
-        <option value="celsiusToFahrenheit">Celsius to Fahrenheit</option>
-        <option value="fahrenheitToCelsius">Fahrenheit to Celsius</option>
-        <option value="metersToFeet">Meters to Feet</option>
-        <option value="feetToMeters">Feet to Meters</option>
-    </select>
+    <div class="converter-container">
+        <label for="conversionType">Select Conversion Type:</label>
+        <select id="conversionType">
+            <option value="celsiusToFahrenheit">Celsius to Fahrenheit</option>
+            <option value="fahrenheitToCelsius">Fahrenheit to Celsius</option>
+            <option value="metersToFeet">Meters to Feet</option>
+            <option value="feetToMeters">Feet to Meters</option>
+        </select>
 
-    <div id="celsiusToFahrenheitConverter">
-        <br>
-        <b>Celsius to Fahrenheit</b>
-        <p>
+        <div id="celsiusToFahrenheitConverter">
             <label for="celsius">Celsius</label>
             <input id="celsius" name="celsius" type="number" dir="rtl">
-            <button id="celsiusToFahrenheitButton"> Compute Fahrenheit </button>
-        </p>
-        <label for="result1" id="r1">Fahrenheit</label>
-        <input id="result1" name="result1" type="number" dir="rtl" readonly></input>
-    </div>
+            <button id="celsiusToFahrenheitButton">Compute Fahrenheit</button>
 
-    <div id="fahrenheitToCelsiusConverter" style="display: none;">
-        <br>
-        <b>Fahrenheit to Celsius</b>
-        <p>
+            <span class="result-label" id="r1">Fahrenheit</span>
+            <input class="result-input" id="result1" name="result1" type="number" dir="rtl" readonly>
+        </div>
+
+        <div id="fahrenheitToCelsiusConverter" style="display: none;">
             <label for="fahrenheit">Fahrenheit</label>
             <input id="fahrenheit" name="fahrenheit" type="number" dir="rtl">
-            <button id="fahrenheitToCelsiusButton"> Compute Celsius </button>
-        </p>
-        <label for="result2" id="r2">Celsius</label>
-        <input id="result2" name="result2" type="number" dir="rtl" readonly></input>
-    </div>
+            <button id="fahrenheitToCelsiusButton">Compute Celsius</button>
 
-    <div id="metersToFeetConverter" style="display: none;">
-        <br>
-        <b>Meters to Feet</b>
-        <p>
+            <span class="result-label" id="r2">Celsius</span>
+            <input class="result-input" id="result2" name="result2" type="number" dir="rtl" readonly>
+        </div>
+
+        <div id="metersToFeetConverter" style="display: none;">
             <label for="meters">Meters</label>
             <input id="meters" name="meters" type="number" dir="rtl">
-            <button id="metersToFeetButton"> Compute Feet </button>
-        </p>
-        <label for="result3" id="r3">Feet</label>
-        <input id="result3" name="result3" type="number" dir="rtl" readonly></input>
-    </div>
+            <button id="metersToFeetButton">Compute Feet</button>
 
-    <div id="feetToMetersConverter" style="display: none;">
-        <br>
-        <b>Feet to Meters</b>
-        <p>
+            <span class="result-label" id="r3">Feet</span>
+            <input class="result-input" id="result3" name="result3" type="number" dir="rtl" readonly>
+        </div>
+
+        <div id="feetToMetersConverter" style="display: none;">
             <label for="feet">Feet</label>
             <input id="feet" name="feet" type="number" dir="rtl">
-            <button id="feetToMetersButton"> Compute Meters </button>
-        </p>
-        <label for="result4" id="r4">Meters</label>
-        <input id="result4" name="result4" type="number" dir="rtl" readonly></input>
-    </div>
-    
-    <button id="clearValuesButton" class="modal-button btn btn-primary">Clear Values</button>
+            <button id="feetToMetersButton">Compute Meters</button>
 
-    <div id="clearModal" class="modal">
-        <p>Do you want to clear values?</p>
-        <button class="modal-button" id="yesButton">Yes</button>
-        <button class="modal-button" id="noButton">No</button>
+            <span class="result-label" id="r4">Meters</span>
+            <input class="result-input" id="result4" name="result4" type="number" dir="rtl" readonly>
+        </div>
+
+        <button id="clearValuesButton" class="modal-button btn btn-primary">Clear Values</button>
+
+        <div id="clearModal" class="modal">
+            <p>Do you want to clear values?</p>
+            <button class="modal-button" id="yesButton">Yes</button>
+            <button class="modal-button-secondary" id="noButton">No</button>
+        </div>
     </div>
-    
+
     <p>
-        Results are rounded, inaccuracy is expected. 
+        Results are rounded, inaccuracy is expected.
         <br>
         <br>
-        <a href="index.html" class="button">Back to Home Page</a>
+        <a href="index.html">Back to Home Page</a>
     </p>
 
 <script>
