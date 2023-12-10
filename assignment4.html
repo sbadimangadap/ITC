@@ -59,6 +59,16 @@
             cursor: pointer;
             margin-top: 20px;
             font-family: 'Pacifico', cursive; /* Fancier font - Pacifico */
+            background-color: #b4866b; /* Light brown - Button background color */
+            color: #f4e2d8; /* Light beige - Button text color */
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .modal-button:hover {
+            background-color: #a37559; /* Slightly darker brown on hover */
         }
 
         #income {
@@ -92,7 +102,7 @@
     <input type="number" id="lineNumberInput" dir="rtl">
 
     <br><br>
-    <button id="addEmployee">Add Employee</button>
+    <button id="addEmployee" class="modal-button">Add Employee</button>
 
     <button id="clearEmployeeButton" class="modal-button">Delete Employee</button>
 
@@ -251,6 +261,4 @@
         }
     </script>
 </body>
-
 </html>
-
