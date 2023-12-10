@@ -1,13 +1,17 @@
 <!DOCTYPE html>
+<html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Assignment 4</title>
     <style>
         body {
-            background-color: #d2b48c; /* Light brown - Background color */
+            background-color: #f9ead0; /* Light yellow - Background color */
             text-align: center;
             font-family: 'Pacifico', cursive; /* Fancier font - Pacifico */
+            margin: 0;
+            padding: 0;
         }
 
         table {
@@ -16,25 +20,26 @@
             font-family: 'Pacifico', cursive; /* Fancier font - Pacifico */
         }
 
-        th, td {
-            border: 1px solid #8b4513; /* Saddle Brown - Border color */
+        th,
+        td {
+            border: 1px solid #dba55d; /* Light goldenrod - Border color */
             padding: 8px;
             text-align: left;
             font-family: 'Pacifico', cursive; /* Fancier font - Pacifico */
         }
 
         tfoot {
-            background-color: #8b4513; /* Saddle Brown - Background color for table footer */
+            background-color: #dba55d; /* Light goldenrod - Background color for table footer */
             font-weight: bold;
             font-family: 'Pacifico', cursive; /* Fancier font - Pacifico */
         }
 
         tbody tr:nth-child(even) {
-            background-color: #bc8f8f; /* Rosy Brown - Background color for even rows */
+            background-color: #f3ccaf; /* Light peach - Background color for even rows */
         }
 
         tbody tr:nth-child(odd) {
-            background-color: #8b4513; /* Saddle Brown - Background color for odd rows */
+            background-color: #dba55d; /* Light goldenrod - Background color for odd rows */
         }
 
         .modal {
@@ -44,7 +49,7 @@
             left: 50%;
             transform: translate(-50%, -50%);
             padding: 20px;
-            background-color: #d2b48c; /* Light brown - Background color for modal */
+            background-color: #f9ead0; /* Light yellow - Background color for modal */
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
             z-index: 1;
             font-family: 'Pacifico', cursive; /* Fancier font - Pacifico */
@@ -64,6 +69,7 @@
     <!-- Include Pacifico font from Google Fonts -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap">
 </head>
+
 <body>
 
     <h1>Simple Payroll</h1>
@@ -103,9 +109,9 @@
         <button class="modal-button" id="yesClearAllButton">Yes</button>
         <button class="modal-button" id="noClearAllButton">No</button>
     </div>
-    
+
     <br><br>
-    
+
     <table id="payrollTable">
         <thead>
             <tr>
@@ -128,136 +134,123 @@
             </tr>
         </tfoot>
     </table>
-    
-    <p>  
+
+    <p>
         <a href="index.html">Back to Home Page</a>
     </p>
-    
-<script>
-document.addEventListener("DOMContentLoaded", function () 
-{
-    document.getElementById("addEmployee").addEventListener("click", addEmployee);
 
-    document.getElementById("clearEmployeeButton").addEventListener("click", openModal);
-    document.getElementById("yesButton").addEventListener("click", deleteEmployee);
-    document.getElementById("noButton").addEventListener("click", closeModal);
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            document.getElementById("addEmployee").addEventListener("click", addEmployee);
 
-    document.getElementById("clearAllEmployeesButton").addEventListener("click", openClearAllModal);
-    document.getElementById("yesClearAllButton").addEventListener("click", clearAllEmployees);
-    document.getElementById("noClearAllButton").addEventListener("click", closeClearAllModal);
-});
-    var payrollData = [];
+            document.getElementById("clearEmployeeButton").addEventListener("click", openModal);
+            document.getElementById("yesButton").addEventListener("click", deleteEmployee);
+            document.getElementById("noButton").addEventListener("click", closeModal);
 
-    function addEmployee() 
-    {
-        var employeeName = document.getElementById("employeeNameInput").value;
-        var daysWorked = parseFloat(document.getElementById("daysWorkedInput").value);
-        var dailyRate = parseFloat(document.getElementById("dailyRateInput").value);
-        var deductionAmount = parseFloat(document.getElementById("deductionAmountInput").value);
-
-        if (isNaN(daysWorked) || isNaN(dailyRate) || isNaN(deductionAmount)) 
-        {
-            alert("Invalid input. Please enter valid numeric values.");
-            return;
-        }
-
-        var grossPay = daysWorked * dailyRate;
-        var netPay = grossPay - deductionAmount;
-
-        var payrollEntry = 
-        {
-            employeeName: employeeName,
-            daysWorked: daysWorked,
-            dailyRate: dailyRate,
-            grossPay: grossPay,
-            deductionAmount: deductionAmount,
-            netPay: netPay
-        };
-
-        payrollData.push(payrollEntry);
-        displayPayroll();
-    }
-
-    function openModal()
-    {
-        document.getElementById("clearModal").style.display = "block";
-    }
-    
-    function closeModal()
-    {
-        document.getElementById("clearModal").style.display = "none";
-    }
-
-    function deleteEmployee() 
-    {
-        closeModal();
-        var lineNumberToDelete = parseInt(document.getElementById("lineNumberInput").value) - 1;
-
-        if (isNaN(lineNumberToDelete) || lineNumberToDelete < 0 || lineNumberToDelete >= payrollData.length) 
-        {
-            alert("Invalid Line Number. Please enter a valid number.");
-            return;
-        }
-
-        payrollData.splice(lineNumberToDelete, 1);
-        displayPayroll();
-    }
-
-    function openClearAllModal() 
-    {
-    document.getElementById("clearAllEmployeesModal").style.display = "block";
-    }
-    
-    function closeClearAllModal() 
-    {
-    document.getElementById("clearAllEmployeesModal").style.display = "none";
-    }
-    
-    function clearAllEmployees() 
-    {
-    payrollData = []; // Clear the array
-    displayPayroll();
-    closeClearAllModal();
-    }
-
-    function updateTotalAmounts() 
-    {
-        totalGrossPay = payrollData.reduce((total, entry) => total + entry.grossPay, 0);
-        totalDeductionAmount = payrollData.reduce((total, entry) => total + entry.deductionAmount, 0);
-        totalNetPay = totalGrossPay - totalDeductionAmount;
-    
-        document.getElementById("totalGrossPay").innerHTML = totalGrossPay.toFixed(2);
-        document.getElementById("totalDeductionAmount").innerHTML = totalDeductionAmount.toFixed(2);
-        document.getElementById("totalNetPay").innerHTML = totalNetPay.toFixed(2);
-    }
-    
-    function displayPayroll() 
-    {
-        var payrollBody = document.getElementById("payrollBody");
-        payrollBody.innerHTML = "";
-
-        payrollData.forEach(function (entry, index) 
-        {
-            var row = payrollBody.insertRow();
-            var cellNumber = row.insertCell(0);
-            var cellEmployeeName = row.insertCell(1);
-            var cellDaysWorked = row.insertCell(2);
-            var cellDailyRate = row.insertCell(3);
-            var cellGrossPay = row.insertCell(4);
-            var cellDeductionAmount = row.insertCell(5);
-            var cellNetPay = row.insertCell(6);
-
-            cellNumber.innerHTML = index + 1;
-            cellEmployeeName.innerHTML = entry.employeeName;
-            cellDaysWorked.innerHTML = entry.daysWorked;
-            cellDailyRate.innerHTML = entry.dailyRate.toFixed(2);
-            cellGrossPay.innerHTML = entry.grossPay.toFixed(2);
-            cellDeductionAmount.innerHTML = entry.deductionAmount.toFixed(2);
-            cellNetPay.innerHTML = entry.netPay.toFixed(2);
+            document.getElementById("clearAllEmployeesButton").addEventListener("click", openClearAllModal);
+            document.getElementById("yesClearAllButton").addEventListener("click", clearAllEmployees);
+            document.getElementById("noClearAllButton").addEventListener("click", closeClearAllModal);
         });
-    updateTotalAmounts();
-    }
-</script>
+        var payrollData = [];
+
+        function addEmployee() {
+            var employeeName = document.getElementById("employeeNameInput").value;
+            var daysWorked = parseFloat(document.getElementById("daysWorkedInput").value);
+            var dailyRate = parseFloat(document.getElementById("dailyRateInput").value);
+            var deductionAmount = parseFloat(document.getElementById("deductionAmountInput").value);
+
+            if (isNaN(daysWorked) || isNaN(dailyRate) || isNaN(deductionAmount)) {
+                alert("Invalid input. Please enter valid numeric values.");
+                return;
+            }
+
+            var grossPay = daysWorked * dailyRate;
+            var netPay = grossPay - deductionAmount;
+
+            var payrollEntry = {
+                employeeName: employeeName,
+                daysWorked: daysWorked,
+                dailyRate: dailyRate,
+                grossPay: grossPay,
+                deductionAmount: deductionAmount,
+                netPay: netPay
+            };
+
+            payrollData.push(payrollEntry);
+            displayPayroll();
+        }
+
+        function openModal() {
+            document.getElementById("clearModal").style.display = "block";
+        }
+
+        function closeModal() {
+            document.getElementById("clearModal").style.display = "none";
+        }
+
+        function deleteEmployee() {
+            closeModal();
+            var lineNumberToDelete = parseInt(document.getElementById("lineNumberInput").value) - 1;
+
+            if (isNaN(lineNumberToDelete) || lineNumberToDelete < 0 || lineNumberToDelete >= payrollData.length) {
+                alert("Invalid Line Number. Please enter a valid number.");
+                return;
+            }
+
+            payrollData.splice(lineNumberToDelete, 1);
+            displayPayroll();
+        }
+
+        function openClearAllModal() {
+            document.getElementById("clearAllEmployeesModal").style.display = "block";
+        }
+
+        function closeClearAllModal() {
+            document.getElementById("clearAllEmployeesModal").style.display = "none";
+        }
+
+        function clearAllEmployees() {
+            payrollData = []; // Clear the array
+            displayPayroll();
+            closeClearAllModal();
+        }
+
+        function updateTotalAmounts() {
+            totalGrossPay = payrollData.reduce((total, entry) => total + entry.grossPay, 0);
+            totalDeductionAmount = payrollData.reduce((total, entry) => total + entry.deductionAmount, 0);
+            totalNetPay = totalGrossPay - totalDeductionAmount;
+
+            document.getElementById("totalGrossPay").innerHTML = totalGrossPay.toFixed(2);
+            document.getElementById("totalDeductionAmount").innerHTML = totalDeductionAmount.toFixed(2);
+            document.getElementById("totalNetPay").innerHTML = totalNetPay.toFixed(2);
+        }
+
+        function displayPayroll() {
+            var payrollBody = document.getElementById("payrollBody");
+            payrollBody.innerHTML = "";
+
+            payrollData.forEach(function (entry, index) {
+                var row = payrollBody.insertRow();
+                var cellNumber = row.insertCell(0);
+                var cellEmployeeName = row.insertCell(1);
+                var cellDaysWorked = row.insertCell(2);
+                var cellDailyRate = row.insertCell(3);
+                var cellGrossPay = row.insertCell(4);
+                var cellDeductionAmount = row.insertCell(5);
+                var cellNetPay = row.insertCell(6);
+
+                cellNumber.innerHTML = index + 1;
+                cellEmployeeName.innerHTML = entry.employeeName;
+                cellDaysWorked.innerHTML = entry.daysWorked;
+                cellDailyRate.innerHTML = entry.dailyRate.toFixed(2);
+                cellGrossPay.innerHTML = entry.grossPay.toFixed(2);
+                cellDeductionAmount.innerHTML = entry.deductionAmount.toFixed(2);
+                cellNetPay.innerHTML = entry.netPay.toFixed(2);
+            });
+            updateTotalAmounts();
+        }
+    </script>
 </body>
+
 </html>
 
