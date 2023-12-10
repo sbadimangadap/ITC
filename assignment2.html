@@ -17,6 +17,9 @@
             align-items: center;
             justify-content: center;
             height: 100vh;
+            background-image: linear-gradient(to right, #8b735b, #e0deda); /* Gradient background */
+            background-size: cover;
+            background-blend-mode: overlay;
         }
 
         h1 {
@@ -24,6 +27,7 @@
             margin-bottom: 20px;
             font-size: 36px;
             color: #4d3631; /* Dark Brown */
+            text-shadow: 2px 2px 2px #fff; /* Text shadow */
         }
 
         label {
@@ -39,6 +43,7 @@
             border: 1px solid #8b735b; /* Brownish */
             border-radius: 5px;
             margin-bottom: 20px;
+            background-color: #f8f5f1; /* Lighter Brown */
         }
 
         button {
@@ -50,6 +55,12 @@
             border-radius: 5px;
             cursor: pointer;
             margin: 10px;
+            box-shadow: 2px 2px 5px #4d3631; /* Button shadow */
+            transition: background-color 0.3s ease; /* Smooth transition */
+        }
+
+        button:hover {
+            background-color: #634b3a; /* Darker Brown on hover */
         }
 
         .modal {
