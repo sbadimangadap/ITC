@@ -3,60 +3,55 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Assignment 4</title>
-    <style>
-        body {
-            background-color: #f5f5dc; /* AntiqueWhite - Background color */
-            text-align: center;
-            font-family: 'Pacifico', cursive;
-        }
+<style>
+    body 
+    {
+    background-color: white;
+    text-align: center;
+    }
+    table 
+    {
+        border-collapse: collapse;
+        width: 100%;
+    }
 
-        table {
-            font-family: 'Pacifico', cursive;
-        }
+    th, td 
+    {
+        border: 1px solid #ffb2b2;
+        padding: 8px;
+        text-align: left;
+    }
+    tfoot
+    {
+        background-color: #ffb2b2;
+        font-weight: bold;
+    }
+    tbody tr:nth-child(even){background-color: #ffc0cb;}
+    tbody tr:nth-child(odd){background-color: #ffd2da;}
 
-        th, td {
-            border: 1px solid #8b4513; /* SaddleBrown - Border color */
-            padding: 8px;
-            text-align: left;
-            font-family: 'Pacifico', cursive;
-        }
+    .modal 
+    {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    z-index: 1;
+    }
 
-        tfoot {
-            background-color: #8b4513; /* SaddleBrown - Background color for table footer */
-            font-weight: bold;
-            font-family: 'Pacifico', cursive;
-        }
+    .modal-button 
+    {
+        cursor: pointer;
+        margin-top: 20px;
+    }
 
-        tbody tr:nth-child(even) {
-            background-color: #a0522d; /* Sienna - Background color for even rows */
-        }
-
-        tbody tr:nth-child(odd) {
-            background-color: #8b4513; /* SaddleBrown - Background color for odd rows */
-        }
-
-        .modal {
-            display: none;
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            padding: 20px;
-            background-color: #d2b48c; /* Tan - Background color for modal */
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-            z-index: 1;
-            font-family: 'Pacifico', cursive;
-        }
-
-        .modal-button {
-            cursor: pointer;
-            margin-top: 20px;
-            font-family: 'Pacifico', cursive;
-        }
-
-        #income {
-            width: 180px;
-        }
+    #income 
+    {
+    width: 180px;
+    }
     </style>
 </head>
 <body>
@@ -255,5 +250,3 @@ document.addEventListener("DOMContentLoaded", function ()
 </script>
 </body>
 </html>
-
-
