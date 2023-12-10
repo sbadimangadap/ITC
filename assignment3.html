@@ -4,14 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Assignment 3</title>
+    <title>Fancy Calculator</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lobster&display=swap">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat&display=swap">
 </head>
 
 <style>
     body {
-        background-color: #e3ccb6; /* Brown background color */
+        background: linear-gradient(to right, #8d6e63, #e3ccb6); /* Gradient background */
         text-align: center;
         font-family: 'Caveat', cursive;
         margin: 0;
@@ -24,17 +24,19 @@
     }
 
     h1 {
-        margin-top: 50px; /* Adjusted margin */
+        margin-top: 50px;
         font-family: 'Lobster', cursive;
-        color: #4e342e; /* Dark brown text color */
+        color: #4e342e;
+        font-size: 2.5em;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Text shadow for emphasis */
     }
 
     select {
         padding: 10px;
         font-size: 16px;
         margin-top: 20px;
-        background-color: #d2b48c; /* Light brown select background color */
-        color: #4e342e; /* Dark brown text color */
+        background-color: #d2b48c;
+        color: #4e342e;
         border: none;
         border-radius: 5px;
     }
@@ -44,23 +46,36 @@
         font-size: 16px;
         margin-top: 10px;
         cursor: pointer;
-        background-color: #795548; /* Brown button color */
+        background-color: #795548;
         color: white;
         border: none;
         border-radius: 5px;
+        transition: background-color 0.3s ease; /* Smooth button transition */
+    }
+
+    button:hover {
+        background-color: #4e342e; /* Darker brown on hover */
     }
 
     input {
         padding: 10px;
         font-size: 16px;
+        border: 1px solid #4e342e; /* Dark brown border */
+        border-radius: 5px;
+        margin-top: 10px;
     }
 
     .calculator-container {
-        background-color: #efebe9; /* Light brown calculator background color */
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white calculator background */
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
         padding: 20px;
         border-radius: 10px;
         margin-top: 20px;
+        transition: box-shadow 0.3s ease; /* Smooth container transition */
+    }
+
+    .calculator-container:hover {
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.5); /* Darker shadow on hover */
     }
 
     .modal {
@@ -70,8 +85,8 @@
         left: 50%;
         transform: translate(-50%, -50%);
         padding: 20px;
-        background-color: #efebe9; /* Light brown modal background color */
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        background-color: rgba(255, 255, 255, 0.8);
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
         z-index: 1;
         border-radius: 10px;
     }
@@ -79,22 +94,27 @@
     .modal-button {
         cursor: pointer;
         margin-top: 20px;
-        background-color: #795548; /* Brown button color */
+        background-color: #795548;
         color: white;
         border: none;
         padding: 10px 20px;
         border-radius: 5px;
     }
 
+    .modal-button:hover {
+        background-color: #4e342e; /* Darker brown on hover */
+    }
+
     a {
         text-decoration: none;
-        color: #4e342e; /* Dark brown text color */
+        color: #4e342e;
         margin-top: 20px;
         font-size: 16px;
+        transition: color 0.3s ease; /* Smooth color transition */
     }
 
     a:hover {
-        color: #795548; /* Brown hover color */
+        color: #795548; /* Darker brown on hover */
     }
 </style>
 
