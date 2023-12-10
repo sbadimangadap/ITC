@@ -21,13 +21,18 @@
 
     h1 {
         margin-top: 100px;
-        font-size: 2.5em;
-        color: #663300;
+        font-size: 3em;
+        color: #8B4513; /* SaddleBrown color */
     }
 
     select {
         padding: 8px;
-        font-size: 1em;
+        font-size: 1.2em;
+        width: 80%;
+        margin: 10px 0;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        background-color: #F5F5DC; /* Beige color */
     }
 
     .converter-container {
@@ -42,8 +47,8 @@
     label {
         display: block;
         margin-top: 15px;
-        font-size: 1.2em;
-        color: #663300;
+        font-size: 1.5em;
+        color: #8B4513; /* SaddleBrown color */
     }
 
     input {
@@ -57,7 +62,7 @@
 
     button {
         padding: 10px 20px;
-        font-size: 1em;
+        font-size: 1.2em;
         background-color: #8B4513; /* SaddleBrown color */
         color: #FFF;
         border: none;
@@ -68,8 +73,8 @@
     .result-label {
         display: block;
         margin-top: 15px;
-        font-size: 1.2em;
-        color: #663300;
+        font-size: 1.5em;
+        color: #8B4513; /* SaddleBrown color */
     }
 
     .result-input {
@@ -99,7 +104,7 @@
         cursor: pointer;
         margin-top: 20px;
         padding: 10px 20px;
-        font-size: 1em;
+        font-size: 1.2em;
         background-color: #8B4513; /* SaddleBrown color */
         color: #FFF;
         border: none;
@@ -110,7 +115,7 @@
         cursor: pointer;
         margin-top: 20px;
         padding: 10px 20px;
-        font-size: 1em;
+        font-size: 1.2em;
         background-color: #ccc;
         color: #333;
         border: none;
@@ -120,7 +125,7 @@
     p {
         margin-top: 20px;
         font-size: 1.2em;
-        color: #663300;
+        color: #8B4513; /* SaddleBrown color */
     }
 
     a {
@@ -130,7 +135,7 @@
     }
 
     a:hover {
-        color: #663300;
+        color: #663300; /* Darker brown on hover */
     }
 </style>
 
@@ -138,7 +143,7 @@
 
     <h1>Conversion Calculator</h1>
 
-    <div class="converter-container">
+    <div class="container converter-container">
         <label for="conversionType">Select Conversion Type:</label>
         <select id="conversionType">
             <option value="celsiusToFahrenheit">Celsius to Fahrenheit</option>
@@ -150,7 +155,7 @@
         <div id="celsiusToFahrenheitConverter">
             <label for="celsius">Celsius</label>
             <input id="celsius" name="celsius" type="number" dir="rtl">
-            <button id="celsiusToFahrenheitButton">Compute Fahrenheit</button>
+            <button id="celsiusToFahrenheitButton" class="btn btn-primary">Compute Fahrenheit</button>
 
             <span class="result-label" id="r1">Fahrenheit</span>
             <input class="result-input" id="result1" name="result1" type="number" dir="rtl" readonly>
@@ -159,7 +164,7 @@
         <div id="fahrenheitToCelsiusConverter" style="display: none;">
             <label for="fahrenheit">Fahrenheit</label>
             <input id="fahrenheit" name="fahrenheit" type="number" dir="rtl">
-            <button id="fahrenheitToCelsiusButton">Compute Celsius</button>
+            <button id="fahrenheitToCelsiusButton" class="btn btn-primary">Compute Celsius</button>
 
             <span class="result-label" id="r2">Celsius</span>
             <input class="result-input" id="result2" name="result2" type="number" dir="rtl" readonly>
@@ -168,7 +173,7 @@
         <div id="metersToFeetConverter" style="display: none;">
             <label for="meters">Meters</label>
             <input id="meters" name="meters" type="number" dir="rtl">
-            <button id="metersToFeetButton">Compute Feet</button>
+            <button id="metersToFeetButton" class="btn btn-primary">Compute Feet</button>
 
             <span class="result-label" id="r3">Feet</span>
             <input class="result-input" id="result3" name="result3" type="number" dir="rtl" readonly>
@@ -177,7 +182,7 @@
         <div id="feetToMetersConverter" style="display: none;">
             <label for="feet">Feet</label>
             <input id="feet" name="feet" type="number" dir="rtl">
-            <button id="feetToMetersButton">Compute Meters</button>
+            <button id="feetToMetersButton" class="btn btn-primary">Compute Meters</button>
 
             <span class="result-label" id="r4">Meters</span>
             <input class="result-input" id="result4" name="result4" type="number" dir="rtl" readonly>
@@ -199,6 +204,9 @@
         <a href="index.html">Back to Home Page</a>
     </p>
 
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <script>
     document.addEventListener("DOMContentLoaded", function () 
     {
