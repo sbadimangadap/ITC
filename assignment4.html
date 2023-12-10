@@ -14,43 +14,49 @@
             font-family: 'Pacifico', cursive;
         }
 
-    th, td 
-    {
-        border: 1px solid #ffb2b2;
-        padding: 8px;
-        text-align: left;
-    }
-    tfoot
-    {
-        background-color: #ffb2b2;
-        font-weight: bold;
-    }
-    tbody tr:nth-child(even){background-color: #ffc0cb;}
-    tbody tr:nth-child(odd){background-color: #ffd2da;}
+        th, td {
+            border: 1px solid #ffb2b2;
+            padding: 8px;
+            text-align: left;
+            font-family: 'Pacifico', cursive; /* Using 'Pacifico' for table cells */
+        }
 
-    .modal 
-    {
-    display: none;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    padding: 20px;
-    background-color: #fff;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-    z-index: 1;
-    }
+        tfoot {
+            background-color: #ffb2b2;
+            font-weight: bold;
+            font-family: 'Pacifico', cursive; /* Using 'Pacifico' for table footer */
+        }
 
-    .modal-button 
-    {
-        cursor: pointer;
-        margin-top: 20px;
-    }
+        tbody tr:nth-child(even) {
+            background-color: #ffc0cb;
+        }
 
-    #income 
-    {
-    width: 180px;
-    }
+        tbody tr:nth-child(odd) {
+            background-color: #ffd2da;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            z-index: 1;
+            font-family: 'Pacifico', cursive; /* Using 'Pacifico' for modal */
+        }
+
+        .modal-button {
+            cursor: pointer;
+            margin-top: 20px;
+            font-family: 'Pacifico', cursive; /* Using 'Pacifico' for buttons */
+        }
+
+        #income {
+            width: 180px;
+        }
     </style>
 </head>
 <body>
