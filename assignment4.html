@@ -1,30 +1,72 @@
 <!DOCTYPE html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Assignment 4</title>
     <style>
         body {
-            background-color: white;
+            background-color: #f8f8f8;
             text-align: center;
-            font-family: 'Pacifico', cursive; /* Using 'Pacifico' as a fancier font */
+            font-family: 'Pacifico', cursive;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        h1 {
+            color: #333;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        label {
+            font-size: 18px;
+            color: #333;
+            margin-right: 10px;
+        }
+
+        input {
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #45a049;
         }
 
         table {
             font-family: 'Pacifico', cursive;
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
         }
 
         th, td {
             border: 1px solid #ffb2b2;
-            padding: 8px;
+            padding: 12px;
             text-align: left;
-            font-family: 'Pacifico', cursive; /* Using 'Pacifico' for table cells */
         }
 
         tfoot {
             background-color: #ffb2b2;
             font-weight: bold;
-            font-family: 'Pacifico', cursive; /* Using 'Pacifico' for table footer */
         }
 
         tbody tr:nth-child(even) {
@@ -45,17 +87,13 @@
             background-color: #fff;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
             z-index: 1;
-            font-family: 'Pacifico', cursive; /* Using 'Pacifico' for modal */
+            font-family: 'Pacifico', cursive;
         }
 
         .modal-button {
             cursor: pointer;
             margin-top: 20px;
-            font-family: 'Pacifico', cursive; /* Using 'Pacifico' for buttons */
-        }
-
-        #income {
-            width: 180px;
+            font-family: 'Pacifico', cursive;
         }
     </style>
 </head>
@@ -66,21 +104,28 @@
     <label for="employeeNameInput">Employee Name:</label>
     <input type="text" id="employeeNameInput">
 
+    <br><br>
+
     <label for="daysWorkedInput">Days Worked:</label>
     <input type="number" id="daysWorkedInput" dir="rtl">
+
+    <br><br>
 
     <label for="dailyRateInput">Daily Rate:</label>
     <input type="number" id="dailyRateInput" dir="rtl">
 
+    <br><br>
+
     <label for="deductionAmountInput">Deduction Amount:</label>
     <input type="number" id="deductionAmountInput" dir="rtl">
 
-    <br>
-    <br>
+    <br><br>
+
     <label for="lineNumberInput">Line Number to Delete:</label>
     <input type="number" id="lineNumberInput" dir="rtl">
 
     <br><br>
+
     <button id="addEmployee">Add Employee</button>
 
     <button id="clearEmployeeButton" class="modal-button">Delete Employee</button>
@@ -98,9 +143,9 @@
         <button class="modal-button" id="yesClearAllButton">Yes</button>
         <button class="modal-button" id="noClearAllButton">No</button>
     </div>
-    
+
     <br><br>
-    
+
     <table id="payrollTable">
         <thead>
             <tr>
@@ -123,11 +168,11 @@
             </tr>
         </tfoot>
     </table>
-    
+
     <p>  
         <a href="index.html">Back to Home Page</a>
     </p>
-    
+
 <script>
 document.addEventListener("DOMContentLoaded", function () 
 {
@@ -255,3 +300,4 @@ document.addEventListener("DOMContentLoaded", function ()
 </script>
 </body>
 </html>
+
